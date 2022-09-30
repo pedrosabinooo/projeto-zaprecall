@@ -1,15 +1,15 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Footer from "./Footer";
-import Perguntas from "./Perguntas";
+import Flashcards from "./Flashcards";
 import LogoContainer from "./LogoContainer";
 
 export default function MainScreen() {
     const [hideWelcomeScreen, setHideWelcomeScreen] = useState(false);
     const [deck, setDeck] = useState({});
     const [perguntasSelecionadas, setPerguntasSelecionadas] = useState([])
-    const [filaRespostas,setFilaRespostas] = useState([])
-    
+    const [filaRespostas, setFilaRespostas] = useState([])
+
     return (
         <ScreenContainer>
             <LogoContainer
@@ -20,9 +20,9 @@ export default function MainScreen() {
                 setPerguntasSelecionadas={setPerguntasSelecionadas}
             />
             {hideWelcomeScreen &&
-                <Perguntas perguntasSelecionadas={perguntasSelecionadas} filaRespostas={filaRespostas} setFilaRespostas={setFilaRespostas}/>}
+                <Flashcards perguntasSelecionadas={perguntasSelecionadas} filaRespostas={filaRespostas} setFilaRespostas={setFilaRespostas} />}
             {hideWelcomeScreen &&
-                <Footer filaRespostas={filaRespostas}/>}
+                <Footer filaRespostas={filaRespostas} />}
         </ScreenContainer>
     )
 }

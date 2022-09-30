@@ -1,12 +1,13 @@
 import styled from "styled-components";
+import IconeErro from "../assets/img/icone_erro.png";
+import IconeQuase from "../assets/img/icone_quase.png";
+import IconeCerto from "../assets/img/icone_certo.png";
 
-export default function Footer({filaRespostas}) {
+export default function Footer({ filaRespostas }) {
     return (
         <FooterConcluidos>
-            {/* BUG Numero de concluidos não tá atualizando
-                BUG Icones não estão renderizando */}
-            <span>{filaRespostas.lenght ? filaRespostas.lenght : 0}/4 CONCLUÍDOS</span>
-            <div>{filaRespostas.map((r,i) => <img src={r} alt="resposta" key={i} />)}</div>
+            <span data-identifier="flashcard-counter">{filaRespostas.length ? filaRespostas.length : 0}/4 CONCLUÍDOS</span>
+            <div>{filaRespostas.map((r, i) => <img src={r === "VERDE" ? IconeCerto : (r === "AMARELO" ? IconeQuase : (r === "VERMELHO" ? IconeErro : ""))} alt={r} key={i} />)}</div>
         </FooterConcluidos>
     )
 }
@@ -26,4 +27,8 @@ const FooterConcluidos = styled.div`
     font-size: 18px;
     color: #333333;
     padding: 20px;
+    img {
+        margin-top: 5px;
+        padding: 0 3px;
+    }
 `

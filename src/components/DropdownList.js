@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Decks from "../assets/decks.js";
+import Decks from "../data/decks.js";
 
 const DropdownIcon = () => {
     return (
@@ -10,21 +10,20 @@ const DropdownIcon = () => {
     );
 };
 
-const options = Array.from(Decks, d=>d.nome);
+const options = Array.from(Decks, d => d.nome);
 
-export default function DropdownList({setDeck}) {
-    const [placeHolder,setPlaceHolder] = useState("Escolha seu deck...");
+export default function DropdownList({ setDeck }) {
+    const [placeHolder, setPlaceHolder] = useState("Escolha seu deck...");
     const [showMenu, setShowMenu] = useState(false);
 
     function clickItem(label) {
         setPlaceHolder(label);
         setShowMenu(!showMenu);
-        setDeck(Decks.filter((d)=>d.nome===label)[0])
-        console.log(Decks.filter((d)=>d.nome===label)[0])
+        setDeck(Decks.filter((d) => d.nome === label)[0])
     }
 
     return (
-        <DropdownContainer>
+        <DropdownContainer data-identifier="deck-selector">
             <DropdownInput onClick={() => setShowMenu(!showMenu)}>
                 <span>{placeHolder}</span>
                 <DropdownIcon />
@@ -35,6 +34,7 @@ export default function DropdownList({setDeck}) {
                         <DropdownItem
                             onClick={() => clickItem(option)}
                             key={option}
+                            data-identifier="deck-option"
                         >
                             {option}
                         </DropdownItem>
@@ -52,7 +52,8 @@ const DropdownContainer = styled.div`
     position: relative;
     border-radius: 5px;
     background: #fff;
-    margin: 50px;
+    margin-top: 40px;
+    margin-bottom: 20px;
     cursor: pointer;
     font-family: 'Recursive';
 `
