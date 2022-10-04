@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
     html, body, div, span, applet, object, iframe,
@@ -51,6 +51,6 @@ const GlobalStyle = createGlobalStyle`
     .root {
         height: 100vh;
     }
-`
+`;
 
 export default GlobalStyle;
